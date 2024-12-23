@@ -1,0 +1,91 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{amsmath, amssymb, graphicx, float, hyperref, geometry}
+\geometry{margin=1in}
+\title{S1 Coursework Comparison of Statistical Methods: Multi-Dimensional Likelihood Fitting vs. sWeights}
+\author{ps2012}
+
+
+\begin{document}
+
+\maketitle
+\begin{abstract}
+This report compares the statistical power of two approaches for analyzing multi-dimensional probability distributions: a multi-dimensional likelihood fit and a weighted fit utilizing sWeights. Through mathematical derivations, numerical simulations, and parametric bootstrapping, we explore their advantages, drawbacks, and applications. All code and analysis are documented and reproducible.
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}
+The goal of this study is to assess the performance of two statistical methods: the multi-dimensional likelihood fit and the weighted fit exploiting sWeights. This involves mathematical proofs, visualization of distributions, parameter estimation, and a thorough comparison of the two approaches under various conditions. The Crystal Ball distribution serves as a central component of the analysis, modeling the signal probability density function (PDF).
+
+\section{Mathematical Proof of Normalization Constant \texorpdfstring{$N$}{N}}
+\label{sec:proof}
+We prove that the normalization constant $N^{-1}$ for the Crystal Ball PDF can be written as:
+\begin{equation}
+N^{-1} = \sigma \left[ \frac{m}{\beta(m-1)} e^{-\beta^2/2} + \sqrt{2\pi} \Phi(\beta) \right].
+\end{equation}
+The derivation includes step-by-step justification, utilizing the properties of Gaussian and power-law tails.
+
+\section{Definition and Normalization of PDFs}
+\label{sec:pdfs}
+This section describes the signal and background models:
+\begin{itemize}
+    \item Signal PDF in $X$: Crystal Ball distribution, truncated in $[0,5]$.
+    \item Signal PDF in $Y$: Exponential decay with parameter $\lambda$.
+    \item Background PDFs: Uniform in $X$ and truncated Gaussian in $Y$.
+\end{itemize}
+Normalization of these PDFs is verified numerically through integration.
+
+\section{Visualization of Distributions}
+\label{sec:visualization}
+Figures in this section include:
+\begin{itemize}
+    \item 1D projections of signal, background, and total PDFs in $X$ and $Y$.
+    \item A 2D plot of the joint probability density function.
+\end{itemize}
+These visualizations confirm the correctness of the models.
+
+\section{Sampling and Maximum Likelihood Fitting}
+\label{sec:fitting}
+\subsection{Sampling from the Joint PDF}
+A high-statistics sample of $100,000$ events is generated using the defined PDFs. Numerical methods and the `timeit` library are used to measure execution time for:
+\begin{itemize}
+    \item Sampling $100,000$ events.
+    \item Performing extended maximum likelihood fits.
+\end{itemize}
+\subsection{Parameter Estimation}
+The extended maximum likelihood fit estimates the nine parameters of the model, including uncertainties.
+
+\section{Parametric Bootstrapping}
+\label{sec:bootstrapping}
+Using parametric bootstrapping, we:
+\begin{itemize}
+    \item Generate ensembles of samples of varying sizes ($500$, $1000$, $2500$, $5000$, $10000$).
+    \item Assess bias and uncertainty in the decay constant $\lambda$ as a function of sample size.
+\end{itemize}
+The results highlight trends in statistical precision and potential biases.
+
+\section{sWeights Analysis}
+\label{sec:sweights}
+The sWeights method is applied by fitting only the $X$ variable and projecting the signal density in $Y$. Weighted samples are used to estimate $\lambda$. The bias and uncertainty are compared with those from parametric bootstrapping.
+
+\section{Comparison of Methods}
+\label{sec:comparison}
+\subsection{Advantages and Drawbacks}
+\begin{itemize}
+    \item \textbf{Multi-dimensional likelihood fit}: High statistical power but computationally intensive.
+    \item \textbf{sWeights}: Efficient for partial models but prone to biases if weights are not accurately estimated.
+\end{itemize}
+\subsection{Preferred Scenarios}
+Recommendations are made for when each method is appropriate, based on the complexity of the problem and computational constraints.
+
+\section{Conclusion}
+\label{sec:conclusion}
+This study demonstrates the trade-offs between multi-dimensional likelihood fitting and sWeights. While the former offers higher precision, the latter can be advantageous in high-dimensional problems with limited computational resources. Future work could explore hybrid approaches to leverage the strengths of both methods.
+
+\section*{References}
+\begin{itemize}
+    \item Lecture notes and references cited in the coursework.
+    \item Relevant documentation for libraries used (e.g., scipy, iminuit).
+\end{itemize}
+
+\end{document}
