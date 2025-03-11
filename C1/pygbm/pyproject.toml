@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pygbm"
+authors = [
+    { name = "Prithvi Singh", email= "prithvisindhu9@gmail.com" },
+]
+description = "Simulate Geometric Brownnian Motion"
+readme = "README.md"
+version= "0.1.0b"
+license= {file="LICENSE.txt"}
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Operating System :: OS Independent",
+    "Environment :: Console",
+    "Intended Audience :: Data Science/Research",
+    "Topic :: Scientific/Engineering :: Machine Learning",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13"
+]
+requires-python = ">=3.8.0"
+dependencies = [
+    "numpy>=1.23.0"
+]
+
+[project.optional-dependencies]
+docs = ["nbsphinx","sphinx", "sphinx_rtd_theme>=1.0","matplotlib","myst_parser"]
+
+[project.scripts]
+pygbm= "pygbm.cli:main"
+
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[tool.pytest]
+addopts = "-v" 
+testpaths = ["/tests"] 

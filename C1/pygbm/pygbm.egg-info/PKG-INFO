@@ -1,3 +1,29 @@
 Metadata-Version: 2.1
 Name: pygbm
-Version: 0.0.0
+Version: 0.1.0b0
+Summary: Simulate Geometric Brownnian Motion
+Author-email: Prithvi Singh <prithvisindhu9@gmail.com>
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Operating System :: OS Independent
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Data Science/Research
+Classifier: Topic :: Scientific/Engineering :: Machine Learning
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Programming Language :: Python :: 3.13
+Requires-Python: >=3.8.0
+Description-Content-Type: text/markdown
+Requires-Dist: numpy>=1.23.0
+Provides-Extra: docs
+Requires-Dist: nbsphinx; extra == "docs"
+Requires-Dist: sphinx; extra == "docs"
+Requires-Dist: sphinx_rtd_theme>=1.0; extra == "docs"
+Requires-Dist: matplotlib; extra == "docs"
+Requires-Dist: myst_parser; extra == "docs"
+
+# PYGBM
+
+This is a small practice package that simulates Geometric Brownian Motion.
